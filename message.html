@@ -115,7 +115,9 @@
             event.stopPropagation();
             event.preventDefault();
             for(const input of form){
-                console.log(input.name);
+                if(input.checked){
+                    console.log(input.name);
+                }
             }
             if(liff.isInClient() && liff.isLoggedIn()){
                 const title     = 'メッセージ送信\n';
