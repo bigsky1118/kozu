@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>ユーザー登録</title>
+    <title>メッセージ送信</title>
 </head>
 <style>
     body{
@@ -46,61 +46,79 @@
 
 </style>
 <body>
-    <form name="regist" action="" method="POST" id="regist">
-        <section id="form-input">
-            <dl>
-                <dt>姓</dt>
-                <dd><input type="text" name="lastname" required placeholder="旧姓も可"></dd>
-            </dl>
-            <dl>
-                <dt>名</dt>
-                <dd><input type="text" name="firstname" required></dd>
-            </dl>
-            <dl>
-                <dt>旧姓</dt>
-                <dd><input type="text" name="pastname"></dd>
-            </dl>
-            <dl>
-                <dt>卒業組</dt>
-                <dd>
-                    <select name="graduate" required>
-                        <option value="1組 厚見学級">1組 厚見学級</option>
-                        <option value="2組 宮本学級">2組 宮本学級</option>
-                        <option value="3組 田村学級">3組 田村学級</option>
-                        <option value="4組 浅野学級">4組 浅野学級</option>
-                        <option value="5組 その他">その他</option>
-                    </select>
-                </dd>
-            </dl>
-            <dl>
-                <dt>現在お住いの地域</dt>
-                <dd><input type="text" name="place"></dd>
-            </dl>
+    <form name="message" action="" method="POST" id="message">
+        <section id="form-select">
+            <ul>
+                <li><input type="checkbox" name="全員" value="全員" id="">全員</li>
+                <!-- <li><input type="checkbox" name="青木 達矢" value="青木 達矢" id="">青木 達矢</li> -->
+                <li><input type="checkbox" name="安 柄泰" value="安 柄泰" id="">安 柄泰</li>
+                <!-- <li><input type="checkbox" name="伊藤 亜衣" value="伊藤 亜衣" id="">伊藤 亜衣</li> -->
+                <!-- <li><input type="checkbox" name="植松 大起" value="植松 大起" id="">植松 大起</li> -->
+                <li><input type="checkbox" name="上村 菜津子" value="上村 菜津子" id="">上村 菜津子</li>
+                <li><input type="checkbox" name="大高 佳菜子" value="大高 佳菜子" id="">大高 佳菜子</li>
+                <li><input type="checkbox" name="大森 貴司" value="大森 貴司" id="">大森 貴司</li>
+                <li><input type="checkbox" name="尾方 健太" value="尾方 健太" id="">尾方 健太</li>
+                <li><input type="checkbox" name="奥村 旅人" value="奥村 旅人" id="">奥村 旅人</li>
+                <li><input type="checkbox" name="柿野 亜衣" value="柿野 亜衣" id="">柿野 亜衣</li>
+                <li><input type="checkbox" name="片岡 まなみ" value="片岡 まなみ" id="">片岡 まなみ</li>
+                <li><input type="checkbox" name="川西 祥子" value="川西 祥子" id="">川西 祥子</li>
+                <li><input type="checkbox" name="木田 三平" value="木田 三平" id="">木田 三平</li>
+                <li><input type="checkbox" name="北角 大空" value="北角 大空" id="">北角 大空</li>
+                <!-- <li><input type="checkbox" name="熊谷 優子" value="熊谷 優子" id="">熊谷 優子</li> -->
+                <li><input type="checkbox" name="黒田 有希" value="黒田 有希" id="">黒田 有希</li>
+                <li><input type="checkbox" name="小桜 直樹" value="小桜 直樹" id="">小桜 直樹</li>
+                <!-- <li><input type="checkbox" name="斉藤 直子" value="斉藤 直子" id="">斉藤 直子</li> -->
+                <li><input type="checkbox" name="島 千智" value="島 千智" id="">島 千智</li>
+                <!-- <li><input type="checkbox" name="島田 真実" value="島田 真実" id="">島田 真実</li> -->
+                <!-- <li><input type="checkbox" name="新庄 唯子" value="新庄 唯子" id="">新庄 唯子</li> -->
+                <li><input type="checkbox" name="杉森 寛隆" value="杉森 寛隆" id="">杉森 寛隆</li>
+                <li><input type="checkbox" name="高木 瞳" value="高木 瞳" id="">高木 瞳</li>
+                <li><input type="checkbox" name="多田 晶彦" value="多田 晶彦" id="">多田 晶彦</li>
+                <li><input type="checkbox" name="辰巳 有弘" value="辰巳 有弘" id="">辰巳 有弘</li>
+                <!-- <li><input type="checkbox" name="田邉 葵" value="田邉 葵" id="">田邉 葵</li> -->
+                <!-- <li><input type="checkbox" name="玉置 奈津美" value="玉置 奈津美" id="">玉置 奈津美</li> -->
+                <!-- <li><input type="checkbox" name="中村 悠乃" value="中村 悠乃" id="">中村 悠乃</li> -->
+                <li><input type="checkbox" name="中山 晋太郎" value="中山 晋太郎" id="">中山 晋太郎</li>
+                <li><input type="checkbox" name="新山 士彦" value="新山 士彦" id="">新山 士彦</li>
+                <li><input type="checkbox" name="藤原 一樹" value="藤原 一樹" id="">藤原 一樹</li>
+                <li><input type="checkbox" name="古川 哲也" value="古川 哲也" id="">古川 哲也</li>
+                <li><input type="checkbox" name="本条 梨奈" value="本条 梨奈" id="">本条 梨奈</li>
+                <li><input type="checkbox" name="前田 朝美" value="前田 朝美" id="">前田 朝美</li>
+                <!-- <li><input type="checkbox" name="松井 友規惠" value="松井 友規惠" id="">松井 友規惠</li> -->
+                <li><input type="checkbox" name="馬渕 良太" value="馬渕 良太" id="">馬渕 良太</li>
+                <!-- <li><input type="checkbox" name="峯 由梨香" value="峯 由梨香" id="">峯 由梨香</li> -->
+                <!-- <li><input type="checkbox" name="森下 まり" value="森下 まり" id="">森下 まり</li> -->
+                <!-- <li><input type="checkbox" name="山川 真未" value="山川 真未" id="">山川 真未</li> -->
+                <li><input type="checkbox" name="山口 真志" value="山口 真志" id="">山口 真志</li>
+                <!-- <li><input type="checkbox" name="山﨑 悠紀子" value="山﨑 悠紀子" id="">山﨑 悠紀子</li> -->
+                <li><input type="checkbox" name="山中 裕貴" value="山中 裕貴" id="">山中 裕貴</li>
+                <li><input type="checkbox" name="山西 希美" value="山西 希美" id="">山西 希美</li>
+                <li><input type="checkbox" name="吉川 早紀" value="吉川 早紀" id="">吉川 早紀</li>
+                <li><input type="checkbox" name="大畑 正弘" value="大畑 正弘" id="">大畑 正弘</li>
+            </ul>
+        </section>
+        <section id="form-message">
+            <textarea name="message" id="message" cols="30" rows="10"></textarea>
         </section>
         <section id="submit">
             <p>
                 <input type="submit" name="submit" value="確定">
                 <input type="hidden" name="type" id="type" value="liff">
-                <input type="hidden" name="userId" id="userId" value="">
             </p>
         </section>
     </form>
 
     <script>
-        const form = document.forms.regist;
-        
-        window.onload = () =>{
-            const params = new URLSearchParams(window.location.search);
-            if(params.has('userId')){
-                document.querySelector('#userId').value = params.get('userId');
-            }
-        }
-        
+        const form = document.forms.message;
+
         form.addEventListener('submit',(event)=>{
             event.stopPropagation();
             event.preventDefault();
+            for(const input of form){
+                console.log(input.name);
+            }
             if(liff.isInClient() && liff.isLoggedIn()){
-                const title     = 'ユーザー登録';
+                const title     = 'メッセージ送信\n';
                 const text      = form.lastname.value.toUpperCase()   +'\n'
                                 + form.firstname.value.toUpperCase()  +'\n'
                                 + form.pastname.value.toUpperCase()   +'\n'
@@ -114,25 +132,25 @@
                 ])
                 liff.closeWindow();
             }
-            if(!liff.isInClient() || !liff.isLoggedIn()){
-                const url = new URL('https://script.google.com/macros/s/AKfycbzCxW4A__UMUquD0pzYF_t8DfwMZdgNgJiAPgXmX8uRcOzmybgjsln6cgl7dNzHDBpn/exec');
-                for(const input of form){
-                    const name = input.name;
-                    const value = input.value;
-                    if(name=='submit' || !value){
-                        continue;
-                    }
-                    url.searchParams.append(name,value);
-                }
-                const options = {
-                    'method'    : 'POST',
-                    'mode'      : 'no-cors',
-                }
-                console.log(url.href, options);
-                fetch(url.href, options)
-                .then(res=>window.close());
-                // window.close();
-            }
+            // if(!liff.isInClient() || !liff.isLoggedIn()){
+            //     const url = new URL('https://script.google.com/macros/s/AKfycbzCxW4A__UMUquD0pzYF_t8DfwMZdgNgJiAPgXmX8uRcOzmybgjsln6cgl7dNzHDBpn/exec');
+            //     for(const input of form){
+            //         const name = input.name;
+            //         const value = input.value;
+            //         if(name=='submit' || !value){
+            //             continue;
+            //         }
+            //         url.searchParams.append(name,value);
+            //     }
+            //     const options = {
+            //         'method'    : 'POST',
+            //         'mode'      : 'no-cors',
+            //     }
+            //     console.log(url.href, options);
+            //     fetch(url.href, options)
+            //     .then(res=>window.close());
+            //     // window.close();
+            // }
             return false;
         })
         
