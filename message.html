@@ -37,8 +37,23 @@
     dd{
         margin: 0;
     }
-    input, select{
+    input, select,textarea{
         font-size: 14px;
+    }
+    ul{
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    li{
+        width: 50%;
+    }
+    li#all{
+        width: 100%;
+    }
+    textarea{
+        width: 100%;
+        min-height: 10em;
     }
     .hide{
         display: none;
@@ -49,7 +64,7 @@
     <form name="message" action="" method="POST" id="message">
         <section id="form-select">
             <ul>
-                <li><input type="checkbox" name="全員" value="全員" id="">全員</li>
+                <li id="all"><input type="checkbox" name="全員" value="全員">全員</li>
                 <!-- <li><input type="checkbox" name="青木 達矢" value="青木 達矢" id="">青木 達矢</li> -->
                 <li><input type="checkbox" name="安 柄泰" value="安 柄泰" id="">安 柄泰</li>
                 <!-- <li><input type="checkbox" name="伊藤 亜衣" value="伊藤 亜衣" id="">伊藤 亜衣</li> -->
@@ -98,7 +113,7 @@
             </ul>
         </section>
         <section id="form-message">
-            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            <textarea name="message" id="message"></textarea>
         </section>
         <section id="submit">
             <p>
