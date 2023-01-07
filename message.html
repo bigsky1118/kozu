@@ -103,7 +103,6 @@
         <section id="submit">
             <p>
                 <input type="submit" name="submit" value="確定">
-                <input type="hidden" name="type" id="type" value="liff">
             </p>
         </section>
     </form>
@@ -114,22 +113,21 @@
         form.addEventListener('submit',(event)=>{
             event.stopPropagation();
             event.preventDefault();
+            const title     = '[メッセージ送信(liff)]';
+            const people    = new Array();
             for(const input of form){
                 if(input.checked){
-                    console.log(input.name);
+                    people.push(input.value);
                 }
             }
+            const message   = form.message.value;
+            const text      = `${title}\n${people.join(',')}\n${message}`;
+            console.log(text);
             if(liff.isInClient() && liff.isLoggedIn()){
-                const title     = 'メッセージ送信\n';
-                const text      = form.lastname.value.toUpperCase()   +'\n'
-                                + form.firstname.value.toUpperCase()  +'\n'
-                                + form.pastname.value.toUpperCase()   +'\n'
-                                + form.graduate.value.toUpperCase()   +'\n'
-                                + form.place.value.toUpperCase()
                 liff.sendMessages([
                     {
                         'type' : `text`,
-                        'text' : `\n☆☆☆ 自動送信 ☆☆☆\n${title}\n\n${text}\n☆☆☆ 自動送信 ☆☆☆\n`,
+                        'text' : text,
                     }
                 ])
                 liff.closeWindow();
