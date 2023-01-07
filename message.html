@@ -1,0 +1,149 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>ユーザー登録</title>
+</head>
+<style>
+    body{
+        padding: 1em 3em;
+        margin: 0 auto;
+        color: #FFFFFF;
+        background-color: #000000;
+    }
+    h2{
+        font-size: 14px;
+        text-align: center;
+    }
+    h3{
+        font-size: 12px;
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+    dl{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1em;
+    }
+    dt{
+        min-width: 6em;
+        text-align: center;
+    }
+    dd{
+        margin: 0;
+    }
+    input, select{
+        font-size: 14px;
+    }
+    .hide{
+        display: none;
+    }
+
+</style>
+<body>
+    <form name="regist" action="" method="POST" id="regist">
+        <section id="form-input">
+            <dl>
+                <dt>姓</dt>
+                <dd><input type="text" name="lastname" required placeholder="旧姓も可"></dd>
+            </dl>
+            <dl>
+                <dt>名</dt>
+                <dd><input type="text" name="firstname" required></dd>
+            </dl>
+            <dl>
+                <dt>旧姓</dt>
+                <dd><input type="text" name="pastname"></dd>
+            </dl>
+            <dl>
+                <dt>卒業組</dt>
+                <dd>
+                    <select name="graduate" required>
+                        <option value="1組 厚見学級">1組 厚見学級</option>
+                        <option value="2組 宮本学級">2組 宮本学級</option>
+                        <option value="3組 田村学級">3組 田村学級</option>
+                        <option value="4組 浅野学級">4組 浅野学級</option>
+                        <option value="5組 その他">その他</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>現在お住いの地域</dt>
+                <dd><input type="text" name="place"></dd>
+            </dl>
+        </section>
+        <section id="submit">
+            <p>
+                <input type="submit" name="submit" value="確定">
+                <input type="hidden" name="type" id="type" value="liff">
+                <input type="hidden" name="userId" id="userId" value="">
+            </p>
+        </section>
+    </form>
+
+    <script>
+        const form = document.forms.regist;
+        
+        window.onload = () =>{
+            const params = new URLSearchParams(window.location.search);
+            if(params.has('userId')){
+                document.querySelector('#userId').value = params.get('userId');
+            }
+        }
+        
+        form.addEventListener('submit',(event)=>{
+            event.stopPropagation();
+            event.preventDefault();
+            if(liff.isInClient() && liff.isLoggedIn()){
+                const title     = 'ユーザー登録';
+                const text      = form.lastname.value.toUpperCase()   +'\n'
+                                + form.firstname.value.toUpperCase()  +'\n'
+                                + form.pastname.value.toUpperCase()   +'\n'
+                                + form.graduate.value.toUpperCase()   +'\n'
+                                + form.place.value.toUpperCase()
+                liff.sendMessages([
+                    {
+                        'type' : `text`,
+                        'text' : `\n☆☆☆ 自動送信 ☆☆☆\n${title}\n\n${text}\n☆☆☆ 自動送信 ☆☆☆\n`,
+                    }
+                ])
+                liff.closeWindow();
+            }
+            if(!liff.isInClient() || !liff.isLoggedIn()){
+                const url = new URL('https://script.google.com/macros/s/AKfycbzCxW4A__UMUquD0pzYF_t8DfwMZdgNgJiAPgXmX8uRcOzmybgjsln6cgl7dNzHDBpn/exec');
+                for(const input of form){
+                    const name = input.name;
+                    const value = input.value;
+                    if(name=='submit' || !value){
+                        continue;
+                    }
+                    url.searchParams.append(name,value);
+                }
+                const options = {
+                    'method'    : 'POST',
+                    'mode'      : 'no-cors',
+                }
+                console.log(url.href, options);
+                fetch(url.href, options)
+                .then(res=>window.close());
+                // window.close();
+            }
+            return false;
+        })
+        
+        liff.init({
+            liffId: "1657466094-P2Eebqdo",      // Use own liffId
+        }).then(() => {
+        }).catch((err) => {
+            console.log('LIFF Initialization failed ', err);
+        });
+
+    </script>
+
+</body>
+</html>
