@@ -128,17 +128,16 @@
         form.addEventListener('submit',(event)=>{
             event.stopPropagation();
             event.preventDefault();
-            const title     = '[メッセージ送信(liff)]';
-            const people    = new Array();
-            for(const input of form){
-                if(input.checked){
-                    people.push(input.value);
-                }
-            }
-            const message   = form.message.value;
-            const text      = `${title}\n${people.join(',')}\n${message}`;
-            console.log(text);
             if(liff.isInClient() && liff.isLoggedIn()){
+                const title     = '[メッセージ送信(liff)]';
+                const people    = new Array();
+                for(const input of form){
+                    if(input.checked){
+                        people.push(input.value);
+                    }
+                }
+                const message   = form.message.value;
+                const text      = `${title}\n${people.join(',')}\n${message}`;
                 liff.sendMessages([
                     {
                         'type' : `text`,
@@ -147,30 +146,11 @@
                 ])
                 liff.closeWindow();
             }
-            // if(!liff.isInClient() || !liff.isLoggedIn()){
-            //     const url = new URL('https://script.google.com/macros/s/AKfycbzCxW4A__UMUquD0pzYF_t8DfwMZdgNgJiAPgXmX8uRcOzmybgjsln6cgl7dNzHDBpn/exec');
-            //     for(const input of form){
-            //         const name = input.name;
-            //         const value = input.value;
-            //         if(name=='submit' || !value){
-            //             continue;
-            //         }
-            //         url.searchParams.append(name,value);
-            //     }
-            //     const options = {
-            //         'method'    : 'POST',
-            //         'mode'      : 'no-cors',
-            //     }
-            //     console.log(url.href, options);
-            //     fetch(url.href, options)
-            //     .then(res=>window.close());
-            //     // window.close();
-            // }
             return false;
         })
         
         liff.init({
-            liffId: "1657466094-P2Eebqdo",      // Use own liffId
+            liffId: "1657742920-DGOWpq9v",      // Use own liffId
         }).then(() => {
         }).catch((err) => {
             console.log('LIFF Initialization failed ', err);
